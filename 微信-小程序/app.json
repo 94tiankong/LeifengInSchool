@@ -1,0 +1,115 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/catalog/catalog",
+    "pages/newGoods/newGoods",
+    "pages/hotGoods/hotGoods",
+    "pages/ucenter/address/address",
+    "pages/ucenter/addressAdd/addressAdd",
+    "pages/ucenter/footprint/footprint",
+    "pages/ucenter/order/order",
+    "pages/ucenter/orderDetail/orderDetail",
+    "pages/ucenter/feedback/feedback",
+    "pages/ucenter/coupon/coupon",
+    "pages/ucenter/collect/collect",
+    "pages/auth/login/login",
+    "pages/auth/register/register",
+    "pages/auth/reset/reset",
+    "pages/pay/pay",
+    "pages/payResult/payResult",
+    "pages/ucenter/index/index",
+    "pages/comment/comment",
+    "pages/commentPost/commentPost",
+    "pages/topicComment/topicComment",
+    "pages/brand/brand",
+    "pages/brandDetail/brandDetail",
+    "pages/search/search",
+    "pages/category/category",
+    "pages/cart/cart",
+    "pages/shopping/checkout/checkout",
+    "pages/shopping/address/address",
+    "pages/shopping/addressAdd/addressAdd",
+    "pages/goods/goods",
+    "pages/topicDetail/topicDetail",
+    "pages/auth/mobile/mobile",
+    "pages/shopping/selCoupon/selCoupon",
+    "pages/ucenter/help/help",
+    "pages/ucenter/helpInfo/helpInfo",
+    "pages/auth/btnAuth/btnAuth",
+    "pages/detailsPaged/detailsPaged",
+    "pages/successfulRelease/successfulRelease",
+    "pages/transactionRecord/transactionRecord",
+    "pages/authentication/attestationPage/attestationPage",
+    "pages/authentication/attestationPageing/attestationPageing",
+    "pages/authentication/attestationPageFail/attestationPageFail",
+    "pages/authentication/attestationPageSucc/attestationPageSucc",
+    "pages/grabbedList/grabbedList",
+    "pages/OrderIssued/OrderIssued",
+    "pages/OrderDetailsPage/OrderDetailsPage",
+    "pages/cash/cash",
+    "pages/evaluate/evaluate",
+    "pages/EvaluationPage/EvaluationPage",
+    "pages/EvaluationPage2/EvaluationPage2",
+    "pages/reInvoice/reInvoice",
+    "pages/chat/list/list",
+    "pages/chat/chat/chat",
+    "pages/microHelp/publish/publish",
+    "pages/microHelp/list/list",
+    "pages/microHelp/detail/detail",
+    "pages/hand2goodsPayTest/hand2goodsPayTest",
+    "pages/hand2goods/publish/publish",
+    "pages/hand2goods/list/list",
+    "pages/hand2goods/detail/detail",
+    "pages/bbs/publish/publish",
+    "pages/bbs/list/list",
+    "pages/bbs/detail/detail",
+    "pages/hand2goods/publishResult/publishResult",
+    "pages/publish/publish"
+
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#9a0000",
+    "navigationBarTitleText": "校园新雷锋",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "backgroundColor": "#fafafa",
+    "borderStyle": "white",
+    "selectedColor": "#9a0000",
+    "color": "#666",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/images/ic_menu_choice_nor.png",
+        "selectedIconPath": "static/images/ic_menu_choice_pressed.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/publish/publish",
+        "iconPath": "static/images/222.png",
+        "selectedIconPath": "static/images/111.png",
+        "text": "发布"
+      },
+      {
+        "pagePath": "pages/chat/list/list",
+        "iconPath": "static/images/chat1.png",
+        "selectedIconPath": "static/images/chat2.png",
+        "text": "消息"
+      },
+      {
+        "pagePath": "pages/ucenter/index/index",
+        "iconPath": "static/images/ic_menu_me_nor.png",
+        "selectedIconPath": "static/images/ic_menu_me_pressed.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true,
+  "sitemapLocation": "sitemap.json"
+}

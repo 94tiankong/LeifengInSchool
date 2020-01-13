@@ -1,0 +1,120 @@
+
+<wxs module="timer" src="./list.wxs"></wxs>
+<view class="container">
+  
+  <!-- banner图 -->
+  <swiper class="banner" indicator-dots="true" autoplay="true" interval="3000" duration="1000">
+  <view style="position:fixed;left:20rpx;top:15rpx;z-index:100;font-weight:bold;">{{university}}</view>
+    <swiper-item>
+      <image src="{{imagefirstsrc}}" background-size="cover" style="width: {{imagewidth}}px; height: {{imageheight}}px;" bindload="imageLoad"></image>
+    </swiper-item>
+  </swiper>
+  <!-- 分类 -->
+  <view class="a-section a-topic" style="margin-top:10rpx;margin-bottom:10rpx;">
+    <!-- <view class='box' style="background:#fff;height:144rpx;">
+      <view class='box_list' wx:for="{{listInfo}}" data-current="{{index}}" wx:key="this" bindtap="chooseImg" style="float:left;width:33.33%;text-align:center; margin-top:12rpx;">
+        <image class="box-image" hidden='{{curIdx===index}}' src="{{item.imgUrl}}" style="width:80rpx;height:80rpx;" bindtap='showBtn' data-id="{{index}}"></image>
+        <image class="box-image" hidden='{{curIdx!==index}}' src="{{item.curUrl}}" style="width:80rpx;height:80rpx;" bindtap='hiddenBtn'></image>
+        <view class="box-text">{{item.title}}</view>
+      </view>
+    </view> -->
+    <view class="m-menu">
+      <view class="item" style="border-right:1px solid #ccc;">
+        <image data-num="1" src="{{_num==1?'/static/images/girl-2.png':'/static/images/girl-1.png'}}" bindtap="menuClick"></image>
+
+        <text style="font-size:26rpx;">帮女神</text>
+      </view>
+      <view class="item" style="border-right:1px solid #ccc;">
+        <!-- <image src="" background-size="cover"></image> -->
+        <image data-num="2" src="{{_num==2?'/static/images/boy-2.png':'/static/images/boy-1.png'}}" bindtap="menuClick"></image>
+        <text style="font-size:26rpx;" data-index='2'>帮男神</text>
+      </view>
+      <view class="item">
+        <!-- <image src="/static/images/teacher-1.png" background-size="cover"></image> -->
+        <image data-num="3" src="{{_num==3?'/static/images/teacher-2.png':'/static/images/teacher-1.png'}}" bindtap="menuClick"></image>
+        <text style="font-size:26rpx;" data-index='3'>帮老师</text>
+      </view>
+    </view>
+  </view>
+  <view style="background:#fff;height:80rpx;position:relative;">
+    <view style="height:21rpx;line-height:38px;margin-left:19px;font-size:30rpx;">类 型 :</view>
+    <picker bindchange="bindPickerChange" range="{{array}}" range-key="{{'type'}}" style="position:absolute;top:21rpx;left:60px;">
+      <view class="picker">
+        <view class="fb-type">
+          <view class="type-label">{{array[index].type}}</view>
+          <image class="type-icon" src="/static/images/pickerArrow.png"></image>
+        </view>
+      </view>
+    </picker>
+  </view>
+  <view class="TypeInvoice">
+
+    <!-- 抢单列表 -->
+    <view class="grabSheet" wx:if="{{helpListPage.length > 0}}">
+      <view style="position: relative;background:#fff;padding:0 30rpx;" wx:for="{{helpListPage}}" wx:key="{{item.helpId}}">
+        <view style="margin-top:10rpx;padding-top:30rpx;" class="clearfix;">
+          <image src="{{item.avatar}}" style="width:80rpx;height:80rpx;border-radius:50%;"></image>
+          <text style="margin-left:20rpx;position:absolute;top:40rpx;font-size:12px;">{{item.realName}}</text>
+          <text style="margin-left:130rpx;position:absolute;top:40rpx;font-size:12px;">{{item.college}}</text>
+          <text>
+          <text style="float:right;;font-size:12px;color:#9a0000;margin-top:20rpx;" wx:if="{{item.helpType==1}}">取快递</text>
+          <text style="float:right;;font-size:12px;color:#9a0000;margin-top:20rpx;" wx:if="{{item.helpType==2}}">送资料</text>
+          <text style="float:right;;font-size:12px;color:#9a0000;margin-top:20rpx;" wx:if="{{item.helpType==3}}">求辅导</text>
+          <text style="float:right;;font-size:12px;color:#9a0000;margin-top:20rpx;" wx:if="{{item.helpType==4}}">代打饭</text>
+          <text style="float:right;;font-size:12px;color:#9a0000;margin-top:20rpx;" wx:if="{{item.helpType==5}}">办事务</text>
+          <text style="float:right;;font-size:12px;color:#9a0000;margin-top:20rpx;" wx:if="{{item.helpType==90}}">其它</text>
+          </text>
+        </view>
+        <navigator url="/pages/microHelp/detail/detail?helpId={{item.helpId}}">
+          <view style="font-size:12px;margin-top:20rpx;">任务时间：{{item.startTimeStr}}<text style="color:#9a0000;"> - </text>{{item.endTimeStr}} 
+          <image src="/static/images/address_right.png" style="width:80rpx;height:80rpx; float:right;margin-top:15rpx;"></image>
+          </view>
+          <view style="margin-top:20rpx;font-size：26rpx;">地址：{{item.startAddr}}<text style="color:#9a0000;"> 到 </text>{{item.endAddr}}</view>
+          <view>
+            <view style="margin-top:20rpx;font-size：26rpx;">
+              <text>任务描述：{{item.helpDesc}}</text>
+            </view>
+          </view>
+          
+        </navigator>
+        <view style="position:relative;margin-top:30rpx;height:140rpx;">
+          <view>
+            <text style="font-size:26px;color:#9a0000;">￥{{item.helpReward}}</text>
+            <text style="padding-left:20rpx;font-size:24rpx;">报酬</text>
+            <text style="padding-left:20rpx;font-size:24rpx;color:#9a0000;" wx:if="{{userId==item.helperUserId}}">我抢啦！</text>
+          </view>
+          <view wx:if="{{item.helpStateStr=='抢单中'}}"> 
+            <view style="width:30%;text-align:center;font-size:14px;position:absolute;top:5px;left:110px;">{{timer.timeStamp(item.countDown)}}
+              <view style="font-size:24rpx;">抢单倒计时</view>
+            </view>
+            <button style="background:#9a0000;color:#fff;margin-top:10rpx;width:35%;position:absolute;top:0rpx;right:0rpx;line-height:40px;font-size:14px;" data-id='{{item.helpId}}' bindtap="grabSheet">抢单
+            </button>
+          </view>
+          <view wx:if="{{item.helpStateStr=='帮助中'}}">
+            <view style="position:absolute;top:0px;right:0rpx;">
+              <image src="/static/images/bangzhuzhong.png" style="width:80rpx;height:80rpx;"></image>
+              <view style="font-size:12px;">帮助中</view>
+            </view>
+
+            <view style="width:30%;text-align:center;font-size:14px;position:absolute;top:5px;left:128px;">{{item.helpTimeStr}}
+              <view style="font-size:24rpx;">接单时间</view>
+            </view>
+
+
+          </view>
+          <view wx:if="{{item.helpStateStr=='已完成'}}">
+            <image src="/static/images/yiwanchengx.png" style="width:114rpx;height:100rpx;position:absolute;right:0rpx;top:0rpx;"></image>
+          </view>
+          <view wx:if="{{item.helpStateStr=='已过期'}}">
+            <image src="/static/images/yiguoqi.png" style="width:124rpx;height:120rpx;position:absolute;right:0rpx;top:0rpx;"></image>
+          </view>
+
+        </view>
+
+      </view>
+    </view>
+    <view class="grabSheet" wx:if="{{helpListPage.length<=0}}" style="text-align:center;background:#fff;padding-top:48px;margin-top:10rpx;">
+      暂无数据
+    </view>
+  </view>
+</view>

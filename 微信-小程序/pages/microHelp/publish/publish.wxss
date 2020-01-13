@@ -1,0 +1,158 @@
+.TypeInvoice{
+  background: #fff;
+}
+
+/* 下拉图标 */
+.top-selected image{
+ height:50rpx;
+ width:50rpx;
+ position: absolute;
+left: 235rpx;
+ top: 15rpx;
+}
+.content{
+height: 70px;
+}
+.isRuleShow {
+display: block;
+}
+.isRuleHide {
+display: none;
+}
+
+.grabSheet{
+  margin:0 30rpx;
+}
+
+.section{
+  margin-top:20rpx;
+  margin-bottom:80rpx;
+
+}
+
+.picker{
+  text-align: center;
+  background: #fff;
+}
+
+.buttonview{
+  text-align: center;
+  margin:0 auto;
+}
+
+.Button{
+  width:80%;
+  background: linear-gradient(to right, #4D6FFB , #5CAFFF)
+}
+.buttontext{
+  color: #FFFFFF;
+}
+
+.fb-body{
+  width: 100%;
+  background: #fff;
+  height: 230rpx;
+  border-bottom:1px solid #ccc;
+  margin-top: 20rpx;
+}
+
+.fb-body .content{
+  width: 100%;
+  height: 100%;
+  color: #333;
+  line-height: 40rpx;
+  font-size: 28rpx;
+}
+
+.fb-body .text-count{
+  padding-top: 17rpx;
+  line-height: 30rpx;
+  float: right;
+  color: #666;
+  font-size: 24rpx;
+}
+
+
+.top{
+ width: 100%;
+ height: 80rpx;
+ padding: 0 20rpx;
+ line-height: 80rpx;
+ font-size: 34rpx;
+ position: relative;
+}
+.top-text{
+ float: left
+}
+/* 下拉框 */
+.top-selected{
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  padding: 0 10rpx 0 30rpx;
+  font-size: 30rpx;
+}
+/* 下拉内容 */
+.select_box {
+  background-color: #fff;
+  width: 100%;
+  position: relative;
+  right: 0;
+  z-index: 66;
+  overflow: hidden;
+  text-align: left;
+  animation: myfirst 0.5s;
+  font-size: 30rpx;
+  border: 1px solid #eee;
+}
+.select_one {
+  padding-left: 30rpx;
+  width: 100%;
+  height: 60rpx;
+  position: relative;
+  line-height: 60rpx;
+  border-bottom: 1px solid #eee;
+}
+/* 下拉过度效果 */
+@keyframes myfirst {
+  from {
+    height: 0rpx;
+  }
+  
+  to {
+    height: 210rpx;
+  }
+}
+/* 下拉图标 */
+.top-selected image{
+ height:45rpx;
+ width:40rpx;
+ position: absolute;
+left: 260rpx;
+ top: 15rpx;
+}
+
+.fb-type{
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  
+}
+
+.fb-type .type-label{
+  height: 36rpx;
+  flex: 1;
+  color: #333;
+  font-size: 28rpx;
+  margin-right:40rpx;
+}
+
+.fb-type .type-icon{
+  height: 36rpx;
+  width: 36rpx;
+}

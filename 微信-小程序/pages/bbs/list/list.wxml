@@ -1,0 +1,68 @@
+<view class='top '>
+  <view class='nav'>
+    <view class='val'>
+      <input name="search" type='text' placeholder-class='holder' bindinput="keywordsInput" maxlength="50" placeholder='请输入关键词搜索:'></input>
+    </view>
+  <view>
+    <button form-type='submit' bindtap="search" class='button_search'>搜索</button>
+  </view>
+</view>
+</view>
+<view class='bg'>
+    <view class='nav1'>
+    <scroll-view class='scroll-view_H' scroll-X="true">
+      <view class='scroll-view_H'>
+      <view  wx:for="{{category1List}}" wx:key="item">
+        <view class="{{category1==item.regid?'select':'normal'}} " id='{{item.regid}}' bindtap='switchNav'>{{item.regname}}</view>
+      </view>
+    </view>
+    </scroll-view>    
+  </view>
+  <swiper current='{{currentTab}}' class='nav2'>
+   <swiper-item >
+    <scroll-view class='scroll-view_H' scroll-X="true">
+      <view class='scroll-view_H'>
+      <view wx:for="{{category2List}}" wx:key="item">
+        <view class="{{category2==item.regid?'select':'normal'}} " id='{{item.regid}}' bindtap='switchNav2'>{{item.regname}}</view>
+      </view>
+    </view>
+    </scroll-view> 
+   </swiper-item>
+  </swiper>
+</view>
+
+<view class='list'>
+  <view class='item' wx:for="{{listPage}}" wx:key="item">
+    <view class='desc'>
+      <view class='baseinfo'>
+        <view class='avatar'>
+          <image src='{{item.avatar}}'style='width:30px;height:30px'></image>
+        </view>
+      <view class='userinfo'>
+        <view class='username'>{{item.nickname}}</view>
+        <view class='usercollege'>{{item.college}}</view>
+      </view>
+    </view>
+      <view class='content'>
+      <navigator url="/pages/bbs/detail/detail?bbsNo={{item.bbsNo}}">
+      {{item.title}}
+      </navigator>
+      </view>
+      <view class='lastline'>
+        <text class="responsetime" wx:if="{{item.lastReplyTimeStr != ''}}">最新回复：{{item.lastReplyTimeStr}}</text>
+        <text class="responsetime" wx:if="{{item.lastReplyTimeStr == ''}}">发布时间：{{item.publishTimeStr}}</text>
+        <image src='/static/images/reply.png' class='commentpicture'></image>
+        <text class='commentnumber'>{{item.replyNum}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view bindtap='returntotop'>
+      <image class="return_icon" src="/static/images/toTop.png" bindtap="goTop"></image>
+  </view>
+<view bindtap='addbutton' style="text-align:center;">
+  <navigator url="/pages/bbs/publish/publish">
+      <image class="addbutton_icon" src="/static/images/toPublish.png"></image>
+  </navigator>
+</view>

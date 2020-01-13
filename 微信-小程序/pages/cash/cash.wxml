@@ -1,0 +1,11 @@
+<view style="margin:40rpx 30rpx;">
+  <view style="margin-bottom:30rpx;">提现金额</view>
+  <view style="border-bottom:1px solid #eee;">
+  <text style="position:absolute;">￥</text><input type='number' name="money" value='{{money}}' bindinput="moneyInput" style="margin-left:36rpx;"/>
+  </view>
+  <view style="color:#999;margin-top:20rpx;">每天限提1次，可用余额{{accountBalance}}元。
+  <text wx:if="{{accountBalance<=1000}}" style="color:green;" bindtap='withdrawAll'>全部提现</text></view>
+    <view style="color:#999;margin-top:20rpx;">提现范围1-1000元，收取2%手续费。</view>
+ <button form-type='submit' bindtap="withdraw" style="background:#9a0000;color:#fff;margin-top:60rpx;height:80rpx;line-height:80rpx;">提现</button>
+
+</view>

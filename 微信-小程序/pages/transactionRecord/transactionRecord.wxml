@@ -1,0 +1,33 @@
+<wxs module="filters" src="./transactionRecord.wxs"></wxs>
+<view>
+
+  <view style="background:#fff;height:100rpx;position:relative;border:10rpx solid #eee;">
+    <view style="height:21rpx;line-height:38px;margin-left:19px;font-size:30rpx;">交易类型：</view>
+
+    <picker bindchange="bindPickerChange" range="{{array}}" range-key="{{'type'}}" style="position:absolute;top:21rpx;left:80px;">
+      <view class="picker">
+        <view class="fb-type">
+          <view class="type-label">{{array[index].type}}</view>
+          <image class="type-icon" src="/static/images/pickerArrow.png"></image>
+        </view>
+      </view>
+    </picker>
+
+  </view>
+</view>
+<view>
+  <view wx:for="{{list}}" wx:key="{{index}}" style="border-bottom:1px solid #eee;">
+    <view style='position:relative;margin:0 30rpx;margin-top:30rpx;'>
+       <text>{{item.operateType }}</text>
+      <text style="color:#9e0000;position:absolute;top:20rpx;right:20rpx;" wx:if="{{item.inExType=='收入'}}">+{{filters.toFix(item.amount)}}</text>
+      <text style="color:#333;position:absolute;top:20rpx;right:20rpx;" wx:if="{{item.inExType=='支出'}}">-{{filters.toFix(item.amount)}}</text>
+      <text style="color:#333;position:absolute;top:20rpx;right:20rpx;" wx:if="{{item.inExType=='提现'}}">-{{filters.toFix(item.amount)}}</text>
+      <text style="position:absolute;top:20rpx;right:20rpx;" wx:if="{{item.inExType=='退款'}}">{{filters.toFix(item.amount)}}</text>
+      <view style="color:#999;font-size:24rpx;position:absolute;top:7rpx;left:122rpx;">{{item.recordTimeStr}}</view>
+      <view style="margin:32rpx 0;">{{item.recordDesc}}</view>
+    </view>
+  </view>
+    <view wx:if="{{list.length<=0}}" style="text-align:center;background:#fff;padding-top:48px;margin-top:10rpx;">
+      暂无数据
+    </view>
+</view>

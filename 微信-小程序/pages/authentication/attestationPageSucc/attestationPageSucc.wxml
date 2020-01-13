@@ -1,0 +1,49 @@
+
+  <view style="padding-left:30rpx;border-bottom:1px solid #ccc;">
+    <view style="height:100rpx;line-height:100rpx;align:center;color:green;">恭喜你，认证成功！可以进行后续操作！</view>
+  </view>
+  <scroll-view scroll-y="true" style="padding-bottom:160rpx;">
+    <view>
+      <view style="text-align:center;height:auto;border-bottom:1px solid #ccc;padding-top:70rpx;">
+          <image src="{{certificatePic}}" mode='aspectFill' bindtap='previewImg' style='width:450rpx;height:300rpx;' ></image>
+      </view>
+    </view>
+    <view>
+      <view style="border-bottom:1px solid #eee;padding:20rpx 30rpx;">
+        <text style="margin-top:8rpx;" wx:if="{{userType=='学生'}}">姓名：{{realName}}(同学)</text>
+        <text style="margin-top:8rpx;" wx:if="{{userType=='老师'}}">姓名：{{realName}}(老师)</text>
+      </view>
+      <view style="border-bottom:1px solid #eee;padding:20rpx 30rpx;">
+        <text style="margin-top:8rpx;">性别：{{gender}}</text>
+      </view>
+      <view style="border-bottom:1px solid #eee;padding:20rpx 30rpx;">
+        <text style="margin-top:8rpx;">手机号：{{mobile}}</text>
+      </view>
+      <view style="border-bottom:1px solid #eee;padding:20rpx 30rpx;">
+        <text style="margin-top:8rpx;">学校：{{university}}</text>
+      </view>
+      <view style="border-bottom:1px solid #eee;padding:20rpx 30rpx;">
+        <text style="margin-top:8rpx;">学院：{{college}}</text>
+      </view>
+      <view wx:if="{{userType=='教师'}}">
+        <view style="border-bottom:1px solid #eee;padding:20rpx 30rpx;">
+          <text style="margin-top:8rpx;">职称:{{major}}</text>
+        </view>
+        <view style="border-bottom:1px solid #eee;padding:20rpx 30rpx;">
+          <text style="margin-top:8rpx;">教职工编号：{{certificateNo}}</text>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{userType=='学生'}}">
+      <view style="border-bottom:1px solid #eee;padding:20rpx 30rpx;">
+        <text style="margin-top:8rpx;">专业：{{major==null?"未填写":major}}</text>
+      </view>
+      <view style="border-bottom:1px solid #eee;padding:20rpx 30rpx;">
+        <text style="margin-top:8rpx;">学号：{{certificateNo}}</text>
+      </view>
+    </view>
+    <view style="border-bottom:1px solid #eee;padding:20rpx 30rpx;">
+        <text style="margin-top:8rpx;">职务：{{jobPost==null?"未填写":jobPost}}</text>
+    </view>
+  </scroll-view>
+  <button bindtap='goBack'>返回</button>

@@ -1,0 +1,167 @@
+.titlearea{
+  display: flex;
+  align-items: center;
+  justify-content:center;
+}
+.title{
+  margin: 5px 15px;
+}
+.bigsize_black{
+  color: #333;
+  font-size: 30rpx;
+}
+.userinfoarea{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content:flex-start;
+  padding-left: 20px;
+}
+.baseinfo{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content:flex-start;
+}
+.username{
+  color: #333;
+  font-size: 28rpx;
+  margin-left: 10px;
+}
+.littlesize_gray{
+  
+  color: #666;
+  font-size: 22rpx;
+}
+.userinfo{
+  margin: 0rpx 5rpx 0rpx 15rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content:center;
+}
+.postinfo{
+  display: flex;
+  flex-direction: row;
+  margin-left: 15px;
+  margin-top: 3px;
+  align-items: flex-start;
+  justify-content:flex-start;
+}
+.floor{
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  margin-left: 70px;
+}
+.floornumber{
+  color: #333;
+  font-size: 28rpx;
+}
+.firstfloor{
+  border-bottom:3px solid #ccc;
+  margin-top: 5rpx;
+  padding-bottom:5px;
+}
+.fb-body{
+  margin-left: 10px;
+  width: 95%;
+  height: 530rpx; 
+}
+.textlineheight{
+  line-height: 30rpx;
+
+}
+.content{
+  height: 100%;
+  color: #666;
+  font-size: 28rpx;
+}
+.floorareaitem_body{
+  margin-top: 5px;
+  margin-left: 10px;
+  width: 95%;
+
+}
+
+.functionbar{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content:space-around;
+}
+.functionitem{
+  display: flex;
+  flex-direction: row;
+}
+.privatechat{
+   color: #666;
+  font-size: 25rpx;
+}
+.likeshowarea{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  margin: 5px 10px 0px 10px;
+  height: 100rpx;
+  line-height: 40rpx;
+  background-color:rgba(128, 128, 128, 0.116);
+  padding-top: 5px;
+  
+}
+.likeshowarea_item{
+  margin-left: 5px;
+}
+.floorarea{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+.floorareaitem{
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  margin-top:5px;
+  border-bottom:3px solid #ccc;
+  padding-bottom:10px;
+}
+.likeline{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-content: flex-start;
+  margin-right: 10px;
+}
+.bottom{
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  height: 30px;
+  background:white;
+}
+.val{
+  display: flex;
+  margin-left: 10px;
+  margin-top: 2px;
+  width: 70%;
+  height: 20px;
+  border:1px solid #cccccc;
+  border-radius: 5px;
+  font-size: 14px;
+  background-color: rgba(209, 202, 202, 0.486);
+}
+.holder{
+  font-size: 13px;
+  margin-left: 5px;
+  color: #999999;
+}
+.button_search{
+  background:#9a0000;color:#fff;margin:0rpx 40rpx;font-size: 10px;
+}

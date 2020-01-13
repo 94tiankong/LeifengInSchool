@@ -1,0 +1,21 @@
+<view style="position:relative;">
+  <view style="margin-left:20%;margin-top:50px;">
+    <image src="/static/images/success.png" style="width:80rpx;height:80rpx;">
+    </image>
+    <text style="font-size:16px;margin-left:30px;position:absolute;top:20rpx;">恭喜您，发布成功</text>
+  </view>
+  <view style="margin:auto;margin-top:30rpx;font-size:24rpx;text-align:center;width:52%;">
+    如果在帮助过程中有其他费用产生，请于抢单的雷锋联系解决方案
+  </view>
+  <view style="font-size:12px;margin-top:30rpx;border-top:1px solid #eee;padding-top:30rpx;text-align:center;">分享给校园雷锋，让雷锋来抢单把</view>
+  <view style="text-align:center;margin-top:30rpx;">
+    <button open-type='share' data-helpid="{{helpId}}" style="float:left;background:#fff;margin-left:75px;">
+      <image src="/static/images/wx.png" style="width:80rpx;height:80rpx;">
+      </image>
+    </button>
+    <button open-type='share' data-helpid="{{helpId}}" style="float:left;background:#fff;">
+      <image src="/static/images/pyq.png" style="width:120rpx;height:96rpx;margin-left:180rpx;">
+      </image>
+    </button> 
+  </view>
+</view>

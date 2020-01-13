@@ -1,0 +1,87 @@
+<view class='titlearea'>
+  <text class='title bigsize_black'>{{bbsDetail.title}}</text>
+</view>
+<view class='firstfloor'>
+<view class='userinfoarea'>
+  <view class='avatar'>
+      <image src='{{bbsDetail.avatar}}'style='width:30px;height:30px'></image>
+  </view>
+  <view class='baseinfo'>
+    <view class='userinfo'>
+      <view class='username'>{{bbsDetail.nickname}}</view>
+      <view class='littlesize_gray' style='margin-left: 10px;'>{{bbsDetail.college}}</view>
+    </view>
+    <view class='postinfo'>
+      <view class='littlesize_gray'>发表于</view>
+      <view class='littlesize_gray'>{{bbsDetail.publishTimeStr}}</view>
+    </view>
+  </view>
+  <view class='floor'>
+    <view class='floornumber'>1楼</view>  
+  </view>
+</view>
+<view class="fb-body" >
+  <view class='textlineheight'>
+    <text class='content'>{{bbsDetail.bbsContent}}</text>
+  </view>
+</view>
+  <view class='functionbar'>
+    <view class='functionitem'>
+      <image src='/static/images/reply.png' style='width:20px;height:20px'></image>
+      <view class='littlesize_gray'>{{bbsDetail.replyNum}}</view> 
+    </view>
+    <view class='functionitem'>
+      <image src='/static/images/unRecommend.png' style='width:20px;height:20px'></image>
+      <view class='littlesize_gray'>{{bbsDetail.recommendNum}}</view> 
+    </view>
+    <view class='functionitem'>
+    <image src='/static/images/chat3.png' style='width:20px;height:20px'></image>
+      <view class='privatechat'>聊一聊</view>
+    </view>
+    <view class='functionitem'>
+      <image src='/static/images/pyq.png' style='width:20px;height:20px'></image>
+    </view>
+  </view>
+  <view class='likeshowarea'>
+    <view class='likeshowarea_item' wx:for="{{bbsDetail.recommendList}}" wx:key="item">
+      <image src='{{item.avatar}}' style='width:18px;height:18px'></image>
+    </view>
+  </view>
+</view>
+<view class='floorarea'>
+  <view class='floorareaitem' wx:for="{{bbsDetail.replyList}}" wx:key="item">
+    <view class='userinfoarea'>
+      <view class='avatar'>
+        <image src='{{item.avatar}}'style='width:30px;height:30px'></image>
+      </view>
+      <view class='baseinfo'>
+        <view class='userinfo'>
+          <view class='username'>{{item.nickname}}</view>
+          <view class='littlesize_gray' style='margin-left: 10px;'>{{item.college}}</view>
+        </view>
+        <view class='postinfo'>
+          <view class='littlesize_gray'>发表于</view>
+          <view class='littlesize_gray'>{{item.replyTimeStr}}</view>
+        </view>
+      </view>
+      <view class='floor'>
+        <view class='floornumber'>{{index+2}}楼</view>  
+      </view>
+    </view>
+    <view class='floorareaitem_body'>
+      <view class='textlineheight'>
+        <text class='content'>{{item.replyContent}}</text>
+      </view>
+    </view>
+    <view class='likeline'>
+    </view>
+  </view>
+</view>
+<view class='bottom'>
+  <view class='val'>
+      <input name="search" type='text' bindtap="toReply" placeholder-class='holder' placeholder='评论点赞，都要勇往直前~'></input>
+  </view>
+  <view>
+    <button form-type='button' bindtap="toReply" class='button_search'>回帖</button>
+  </view>
+</view>

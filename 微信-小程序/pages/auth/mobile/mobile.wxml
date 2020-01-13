@@ -1,0 +1,19 @@
+
+<view>
+  <view>
+    <!-- <view class="login-title">关联手机号</view> -->
+    <form bindsubmit="bindLoginMobilecode">
+      <form bindsubmit="bindGetPassCode">
+        <view class="login">
+          <view class="first-line"><input type="digit" name="mobile" bindinput="bindInputMobile" placeholder="请输入11位手机号" value="{{mobile}}" maxlength="11" auto-focus/></view>
+          <view class="second-line">
+            <input type="digit" name="code" placeholder="四位验证码" value="{{code}}"/>
+            <button bindtap="sendVCode" disabled="{{disableGetMobileCode}}" 
+            style="background:#9e0000;color:#fff;">{{getCodeButtonText}}</button>
+          </view>
+        </view>
+      </form>
+      <view class="third-line"><button formType="submit">提交</button></view>
+    </form>
+  </view>
+</view>

@@ -1,0 +1,94 @@
+<view class='toparea'>
+  <view class='baseinfo'>
+        <view class='avatar'>
+          <image src='{{hand2goods.sellerAvatar}}'style='width:30px;height:30px'></image>
+        </view>
+        <view class='userinfo'>
+          <view class='top_firstline'>
+            <view class='bigsize_black'>{{hand2goods.sellerNickname}}</view>
+            <view class='littlesize_gray' style='margin:2px 0px 0px 20px'>{{hand2goods.issueTimeStr}}</view>
+            <view class='littlesize_gray' style='margin:2px 0px 0px 120px'>浏览{{hand2goods.viewNum}}次</view>
+
+          </view>
+          <view class='top_secondline'>
+            <view class='littlesize_gray'>{{hand2goods.sellerCollege}}</view>
+          </view>
+          
+        </view>
+  </view>
+
+</view>
+<view class='title'>
+  <view class='title_firstline'>
+    <text wx:if="{{hand2goods.deliverWay == 1}}" size='mini' class='containdeliver'>自取</text>
+    <text wx:if="{{hand2goods.deliverWay == 2}}" size='mini' class='containdeliver'>包送</text>
+    <view class='bigsize_black'>{{hand2goods.title}}</view>
+  </view>
+  <view class='title_secondline'>
+    <text class='bigsize_black'>转让价：</text>
+    <text class='bigsize_red'>￥{{hand2goods.currentPrice}}</text>
+    <text class='bigsize_black' style='margin-left:100px'>原价：</text>
+    <text class='bigsize_red'>￥{{hand2goods.originalPrice}}</text>
+
+  </view>
+</view>
+<view class="fb-body" >
+  <text>{{hand2goods.goodsDesc}}</text>
+</view>
+
+<view class='showpicturepart'>
+  <view wx:for="{{hand2goods.mediaList}}" wx:key="item">
+     <image wx:if="{{item.mediaType == 1}}" src='{{item.mediaUrl}}' style='width:123px;height:103px'></image>
+     <video wx:if="{{item.mediaType == 2}}" src="{{item.mediaUrl}}" binderror="videoErrorCallback" style='width:123px;height:103px'></video>
+  </view>
+</view>
+
+<view class='leavemessagepart'>
+  <text class='superbigsize'>留言</text>
+  <view class='itempart' wx:for="{{hand2goods.messageList}}" wx:key="message">
+    <view class='lmfirstline'>
+      <view class='avatar'>
+        <image src='{{message.messageAvatar}}' style='width:20px;height:20px'></image>
+      </view>
+      <text class='bigsize_black' style='margin-left:8px'>{{message.messageNickname}}</text>
+      <text class='littlesize_gray' style='margin-left:40px;margin-top:2px'>{{message.messageCollege}}</text>
+      <text class='littlesize_gray' style='margin-left:80px;margin-top:2px'>{{message.messageTimeStr}}</text>
+    </view>
+    <view class='lmsecondline'>
+      <text class='bigsize_black'>留言内容：</text>
+      <text class='bigsize_black'>{{message.message}}</text>
+    </view>
+    <view class='replypart'>
+      <view class='replyfirstpart'>
+        <text class='littlesize_gray'>{{message.replyNickname}} {{message.replyCollege}}</text>
+        <text class='littlesize_gray buildingmaster'>回复者</text>
+        <text class='littlesize_gray' style='margin-left:80px;margin-top:2px'>{{message.replyTimeStr}}</text>
+      </view>
+      <view class='replysecondpart'>
+        <text class='littlesize_black'>回复@</text>
+        <text class='littlesize_black'>{{message.messageNickname}}:</text>
+        <text class='littlesize_black'>{{message.reply}}</text>
+      </view>
+    </view>
+  </view>
+ 
+</view> 
+<view class='bottompart'>
+  <view class='bottomitem'>
+    <image src='/static/images/collection.png'style='width:20px;height:20px'></image>
+    <text class='bigsize_black'>收藏</text>
+  </view>
+  <view class='bottomitem'>
+    <image src='/static/images/leavemessage.png'style='width:20px;height:20px'></image>
+    <text class='bigsize_black'>留言</text>
+  </view>
+  <view class='bottomitem'>
+    <image src='/static/images/privatechat.png'style='width:20px;height:20px'></image>
+    <text class='bigsize_black'>私聊</text>
+  </view>
+  <view class='bottomitem'>
+    <image src='/static/images/share.png'style='width:20px;height:20px'></image>
+    <text class='bigsize_black'>分享</text>
+  </view>
+  <image src='/static/images/purchase.png' style='width:50px;height:27px'></image>
+</view>

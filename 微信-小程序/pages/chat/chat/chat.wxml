@@ -1,0 +1,36 @@
+<!--chat.wxml-->
+<import src="/pages/chat/components/bubble/bubble.wxml" />
+<view class="container">
+  <scroll-view 
+    scroll-y 
+    class="chat-content"  
+    scroll-top="{{scrollTop}}"
+    scroll-into-view="{{lastId}}">
+    <block wx:for="{{messages}}" wx:key="messages{{index}}" >
+      <template id="msg{{index}}" is="bubble" data="{{...item}}" />
+    </block>
+    <view wx:if="{{messages.length<=0}}" style="text-align:center;background:#fff;padding:30px 0;margin-top:10rpx;margin-bottom:10rpx;">
+        暂无聊天记录
+    </view>
+     <view class="bubble-container" style="height:50px;z-index:-9;">我是隐藏的！</view>
+  </scroll-view>
+
+  <form class="chat-input" id="hei">
+    <view class="chat-input-wrapper" style="position:fixed; bottom:10rpx;">
+      <view class="chat-input-record"></view>
+      <view class="chat-input-main">
+        <input 
+          value="{{msg}}"
+          cursor-spacing="16" 
+          adjust-position="{{true}}" 
+          cursor="16" 
+          confirm-hold="{{true}}"
+          bindinput="onInput"
+          bindfocus="onFocus" />
+      </view>
+      <view class="chat-input-other">
+        <button class='btn' bindtap="send">发送</button>
+      </view>
+    </view>
+  </form>
+</view>

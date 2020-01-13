@@ -1,0 +1,2 @@
+<!--pages/hand2goodsPayTest/hand2goodsPayTest.wxml.wxml-->
+<view><button style="background:#9a0000;color:#fff;margin-top:10rpx;width:252rpx;position:absolute;top:0rpx;right:0rpx;line-height:40px;font-size:14px;" data-price='0.5' bindtap="hand2GoodsPay">购买，0.5元</button></view>

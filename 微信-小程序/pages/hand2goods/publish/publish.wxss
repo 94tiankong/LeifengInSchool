@@ -1,0 +1,71 @@
+.section{
+  display: flex;
+  justify-content: center;
+  border-bottom:3px solid #ccc
+}
+.addpicturepart{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0rpx 20rpx 40rpx 20rpx;
+}
+.addedpicturepart{
+  width: 100%;
+  display:flex;
+  justify-content: space-between;
+  flex-direction:row;
+  padding: 20rpx;
+  height:120px;
+}
+.td {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.addpicturepart showpicture{
+  width:28%;
+  height:80px
+}
+.addedpicture{
+  background: rgb(184, 182, 182);
+  width:30%;height:80px;
+}
+.bigsize{
+  color: #333;
+  font-size: 30rpx;
+}
+.delImg{
+  margin-left:60rpx;line-height:40rpx;font-size:28rpx;
+}
+.littlesize{
+  color: #333;
+  line-height: 40rpx;
+  font-size: 28rpx;
+
+}
+.title{
+  float:left;
+  margin-top:8rpx;
+}
+.arrow{
+  width:60rpx;height:60rpx; float:right;margin-top:18rpx;
+  
+}
+.blocks{
+  display: flex;
+  background:#fff;height:80rpx;
+  line-height:80rpx;
+  border-bottom:1px solid #eee;    
+}
+
+.button{
+  background:#9a0000;color:#fff;margin:60rpx 30rpx;
+}
+.content{
+  margin: 20rpx 20rpx 0rpx 20rpx;
+  border-bottom:3px solid #ccc
+
+}
+.Classificationsection{
+  margin: 0rpx 0rpx 0rpx 10rpx;
+}

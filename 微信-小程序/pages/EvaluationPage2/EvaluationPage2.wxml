@@ -1,0 +1,15 @@
+<view>
+  <view style="padding:40rpx;border-bottom:10rpx solid #eee;padding-bottom:60rpx">
+  <image src='{{seekeravatar}}' style="width:70rpx;height:70rpx;border-radius:30rpx;"></image>
+  <text style="">{{seeker}}</text>
+  </view>
+  <view style="text-align:center;margin-top:30rpx;">
+    <view>评价求助者</view>
+    <image class="start" wx:for="{{5}}" data-index="{{index}}" bindtap='selectIndexNum' src="{{score >= index ?  '/static/images/xing.png':'/static/images/start.png'}}" />
+  </view>
+  <view class="fb-body">
+    <textarea class="content" placeholder="求助者态度怎么样,帮助过程中有没有不愉快的事情发生" bindinput="contentInput" maxlength="140" auto-focus="true" value="{{content}}" />
+    <view class="text-count">{{contentLength}}/140</view>
+  </view>
+  <view class="fb-btn" bindtap="sbmitFeedback">提交</view>
+</view>

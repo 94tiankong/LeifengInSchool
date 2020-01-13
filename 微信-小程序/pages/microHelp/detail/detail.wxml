@@ -1,0 +1,84 @@
+<wxs module="timer" src="../../index/index.wxs">
+</wxs>
+<view>
+  <view class="grabSheet">
+    <view style="position: relative;padding:0 30rpx;">
+      <view style="margin-top:20rpx;" class="clearfix;">
+        <image src="{{msg.avatar}}" style="width:80rpx;height:80rpx;border-radius:50%;"></image>
+        <text style="margin-left:20rpx;position:absolute;top:20rpx;">{{msg.realName}}</text>
+        <text style="float:right;">
+            <text style="font-size:12px;color:#9a0000;margin-top:20rpx;" wx:if="{{msg.helpType==1}}">取快递</text>
+        <text style="font-size:12px;color:#9a0000;margin-top:20rpx;" wx:if="{{msg.helpType==2}}">送资料</text>
+        <text style="font-size:12px;color:#9a0000;margin-top:20rpx;" wx:if="{{msg.helpType==3}}">求辅导</text>
+        <text style="font-size:12px;color:#9a0000;margin-top:20rpx;" wx:if="{{msg.helpType==4}}">代打饭</text>
+        <text style="font-size:12px;color:#9a0000;margin-top:20rpx;" wx:if="{{msg.helpType==5}}">办事务</text>
+        <text style="font-size:12px;color:#9a0000;margin-top:20rpx;" wx:if="{{msg.helpType==90}}">其他</text>
+        </text>
+      </view>
+      <view style="position:relative;">
+        <view>
+          <text style="font-size:26px;color:#9a0000">￥{{msg.helpReward}}</text>
+          <text style="padding-left:15rpx;font-size:12px;">报酬</text>
+          <view style="font-size:12px;padding:15rpx 0;">送达时间：{{msg.startTimeStr}}-{{msg.endTimeStr}}
+          </view>
+          <view wx:if="{{msg.helpStateStr=='抢单中'}}" style="font-size:12px;">抢单倒计时：{{timer.timeStamp(msg.countDown)}}</view>
+          <view wx:if="{{msg.helpStateStr!='抢单中'}}" style="font-size:12px;">抢单时间：{{msg.helpTimeStr}}</view>
+        </view>
+      </view>
+      <view style="padding:15rpx 0;font-size：26rpx;">地址：从{{msg.startAddr}}至{{msg.endAddr}}</view>
+      <view>任务描述：{{msg.helpDesc}}</view>
+    </view>
+
+    <view style="background:#fff;margin-top:20rpx;border-top:15rpx solid #f4f4f4;padding:0 30rpx;">
+      <view style="padding-bottom:10rpx;font-size:14px;padding:25rpx 0;">求助者信息：
+      <button open-type='share' data-helpid="{{helpId}}" data-usergroup="{{msg.userGroup}}" style="width:200rpx;height:100rpx;margin-right:20rpx;margin-left:30rpx;float:right;background:#fff;">
+        <image src="/static/images/wx.png" style="width:50rpx;height:50rpx;"></image><text>分享吧</text>
+      </button>
+        <navigator wx:if="{{userId!=msg.seekerUserId}}" url="/pages/chat/chat/chat?user2Nickname={{msg.nickname}}&user2Id={{msg.seekerUserId}}&user2Avatar={{msg.seekerAvatar}}" style="float:right;"><image src="/static/images/chat3.png" style="width:50rpx;height:50rpx;margin-right:20rpx;"></image><text>聊一聊</text></navigator>
+      </view>
+      <view style="padding-bottom:15rpx;">身份：
+        <text>{{msg.authenInfo.userType}}</text>
+      </view>
+      <view style="padding-bottom:15rpx;">学院：
+        <text>{{msg.authenInfo.college}}</text>
+      </view>
+      <view style="padding-bottom:15rpx;">职称：
+        <text>{{msg.authenInfo.major}}</text>
+      </view>
+      <view style="padding-bottom:15rpx;">姓名：
+        <text>{{msg.realName}}</text>
+      </view>
+      <view style="padding-bottom:15rpx;">性别：
+        <text>{{msg.authenInfo.gender}}</text>
+      </view>
+      <view style="padding-bottom:15rpx;">电话：
+        <text>{{msg.mobile}}</text>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{msg.helpStateStr=='抢单中'}}">
+    <button style="background:#fff;color:#9a0000;border:1px solid #9a0000;margin-top:10rpx;line-height:40px;font-size:14px;position:absolute;bottom:200rpx;width:34%;left:8%;" data-id='{{msg.helpId}}' bindtap="returnHomePage">返回首页
+    </button>
+    <button style="background:#9a0000;color:#fff;margin-top:10rpx;line-height:40px;font-size:14px;position:absolute;bottom:200rpx;width:34%;left:55%;" data-id='{{msg.helpId}}' bindtap="grabSheet">抢单
+    </button>
+  </view>
+  <view wx:if="{{msg.helpStateStr=='帮助中'}}">
+    <button style="background:#9a0000;color:#fff;margin-top:10rpx;line-height:40px;font-size:14px;position:absolute;bottom:200rpx;width:34%;left:8%;" data-id='{{msg.helpId}}' bindtap="returnHomePage">返回首页
+    </button>
+    <view style="position:absolute;bottom:176rpx;left:65%;">
+      <image src="/static/images/bangzhuzhong.png" style="width:40px;height:40px;"></image>
+    <view style="font-size:12px;font-size:12px;">帮助中</view>
+    </view>
+  </view>
+  <view wx:if="{{msg.helpStateStr=='已过期'}}">
+    <button style="background:#9a0000;color:#fff;margin-top:10rpx;line-height:40px;font-size:14px;position:absolute;bottom:200rpx;width:34%;left:8%;" data-id='{{msg.helpId}}' bindtap="returnHomePage">返回首页
+    </button>
+    <image src="/static/images/yiguoqi.png" style="width:124rpx;height:120rpx;position:absolute;bottom:90px;left:67%;"></image>
+  </view>
+  <view wx:if="{{msg.helpStateStr=='已完成'}}">
+    <button style="background:#9a0000;color:#fff;margin-top:10rpx;line-height:40px;font-size:14px;position:absolute;bottom:200rpx;width:34%;left:8%;" data-id='{{msg.helpId}}' bindtap="returnHomePage">返回首页
+    </button>
+    <image src="/static/images/yiwanchengx.png" style="width:114rpx;height:100rpx;position:absolute;bottom:100px;left:67%;"></image>
+  </view>
+
+</view>

@@ -1,0 +1,55 @@
+<wxs module="timer" src="../index/index.wxs">
+</wxs>
+<view>
+  <view class="grabSheet">
+    <view style="position: relative;padding:0 30rpx;">
+      <view style="margin-top:20rpx;" class="clearfix;">
+        <image src="{{msg.avatar}}" style="width:80rpx;height:80rpx;border-radius:50%;"></image>
+        <text style="margin-left:20rpx;position:absolute;top:20rpx;">{{msg.realName}}</text>
+        <text style="float:right;">
+            <text style="font-size:12px;color:#9a0000;margin-top:20rpx;" wx:if="{{msg.helpType==1}}">取快递</text>
+        <text style="font-size:12px;color:#9a0000;margin-top:20rpx;" wx:if="{{msg.helpType==2}}">送资料</text>
+        <text style="font-size:12px;color:#9a0000;margin-top:20rpx;" wx:if="{{msg.helpType==3}}">求辅导</text>
+        <text style="font-size:12px;color:#9a0000;margin-top:20rpx;" wx:if="{{msg.helpType==4}}">带打饭</text>
+        <text style="font-size:12px;color:#9a0000;margin-top:20rpx;" wx:if="{{msg.helpType==90}}">其他</text>
+        </text>
+      </view>
+      <view style="position:relative;">
+        <view>
+          <text style="font-size:26px;color:#9a0000">￥{{msg.helpReward}}</text>
+          <text style="padding-left:15rpx;font-size:12px;">报酬</text>
+          <view style="font-size:12px;padding:15rpx 0;">送达时间：{{msg.startTimeStr}}-{{msg.endTimeStr}}
+          </view>
+          <view style="font-size:12px;">抢单倒计时：{{timer.timeStamp(msg.countDown)}}
+          </view>
+        </view>
+      </view>
+      <view style="padding:15rpx 0;font-size：26rpx;">地址：从{{msg.startAddr}}至{{msg.endAddr}}</view>
+      <view>任务描述：{{msg.helpDesc}}</view>
+    </view>
+
+    <view style="background:#fff;margin-top:20rpx;border-top:15rpx solid #f4f4f4;padding:0 30rpx;">
+      <view style="padding-bottom:10rpx;font-size:14px;padding:25rpx 0;">求助者信息 </view>
+      <view style="padding-bottom:15rpx;">身份：
+        <text>{{msg.authenInfo.userType}}</text>
+      </view>
+      <view style="padding-bottom:15rpx;">学院：
+        <text>{{msg.authenInfo.college}}</text>
+      </view>
+      <view style="padding-bottom:15rpx;">职称：
+        <text>{{msg.authenInfo.major}}</text>
+      </view>
+      <view style="padding-bottom:15rpx;">姓名：
+        <text>{{msg.realName}}**</text>
+      </view>
+      <view style="padding-bottom:15rpx;">性别：
+        <text>{{msg.authenInfo.gender}}</text>
+      </view>
+      <view style="padding-bottom:15rpx;">电话：
+        <text>{{msg.mobile}}</text>
+      </view>
+    </view>
+  </view>
+   <button style="background:#9a0000;color:#fff;margin-top:10rpx;line-height:40px;font-size:14px;position:fixed;bottom:0rpx;width:100%;"  data-id='{{msg.helpId}}'  bindtap="grabSheet" >抢单
+          </button>
+</view>

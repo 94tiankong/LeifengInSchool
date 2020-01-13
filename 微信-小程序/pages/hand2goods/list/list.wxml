@@ -1,0 +1,71 @@
+<view class='top '>
+  <view class='nav'>
+    <view class='searchpart'>
+      <view class='val'>
+        <input style="height:60rpx;line-height:60rpx;" name="keywords" type='text' bindinput="keywordsInput" maxlength="50" placeholder='搜一搜'></input>
+      </view>
+      <view class='searchtext' bindtap="search">搜索</view>
+    </view>
+  </view>
+</view>
+<view class='bg'>
+  <view class='nav1'>
+    <scroll-view class='scroll-view_H' scroll-X="true">
+      <view class='scroll-view_H'>
+      <view  wx:for="{{category1List}}">
+        <view class="{{category1==item.regid?'select':'normal'}} " id='{{item.regid}}' bindtap='switchNav'>{{item.regname}}</view>
+      </view>
+    </view>
+    </scroll-view>    
+  </view>
+  <swiper current='{{currentTab}}' class='nav2'>
+  <swiper-item >
+    <scroll-view class='scroll-view_H' scroll-X="true">
+      <view class='scroll-view_H'>
+      <view wx:for="{{category2List}}">
+        <view class="{{category2==item.regid?'select2':'normal2'}} " id='{{item.regid}}' bindtap='switchNav2'>{{item.regname}}</view>
+      </view>
+    </view>
+    </scroll-view> 
+  </swiper-item>
+</swiper>
+</view>
+<view class='list'>
+  <view class='item' wx:for="{{listPage}}" wx:key="item">
+    <view>
+    <navigator url="/pages/hand2goods/detail/detail?goodsNo={{item.goodsNo}}">
+      <image wx:if="{{item.mediaType==1}}" src='{{item.mediaUrl}}' style='width:103px;height:103px'></image>
+      <video wx:if="{{item.mediaType == 2}}" src="{{item.mediaUrl}}" binderror="videoErrorCallback" style='width:103px;height:103px'></video>
+      </navigator>
+    </view>
+    <view class='desc'>
+      <view class='baseinfo'>
+        <view class='avatar'>
+          <image src='{{item.sellerAvatar}}'style='width:30px;height:30px'></image>
+        </view>
+        <view class='userinfo'>
+          <view class='username'>{{item.sellerNickname}}</view>
+          <view class='usercollege'>{{item.sellerCollege}}</view>
+        </view>
+      </view>
+      <navigator url="/pages/hand2goods/detail/detail?goodsNo={{item.goodsNo}}">
+      <view class='content'>{{item.title}}</view>
+      </navigator>
+      <view class='price'>￥{{item.currentPrice}}元</view>
+      <view class='count'>
+        <view>{{item.issueTimeStr}}</view>
+        <view class="liulan">浏览{{item.viewNum}}次</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view bindtap='returntotop'>
+      <image class="return_icon" src="/static/images/toTop.png" bindtap="goTop"></image>
+  </view>
+<view bindtap='addbutton' style="text-align:center;">
+  <navigator url="/pages/hand2goods/publish/publish">
+      <image class="addbutton_icon" src="/static/images/toPublish.png"></image>
+  </navigator>
+</view>
+<view style="height:120rpx;line-height:120rpx;text-align:center;">没有啦！</view>

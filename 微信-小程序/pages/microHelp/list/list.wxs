@@ -1,0 +1,23 @@
+var timer={
+
+  timeStamp: function (StatusMinute) {
+    var day = parseInt(StatusMinute / 60 / 24);
+    var hour = parseInt(StatusMinute / 60 % 24);
+    var min = parseInt(StatusMinute % 60);
+    StatusMinute = "";
+    if (day > 0) {
+      StatusMinute = day + "天";
+    }
+    if (hour > 0) {
+      StatusMinute += hour + "时";
+    }
+    if (min > 0) {
+      StatusMinute += parseFloat(min) + "分";
+    }
+    //三元运算符 传入的分钟数不够一分钟 默认为0分钟，else return 运算后的StatusMinute 
+    return StatusMinute == "" ? "0分" : StatusMinute;
+  }
+}
+module.exports = {
+  timeStamp: timer.timeStamp
+}

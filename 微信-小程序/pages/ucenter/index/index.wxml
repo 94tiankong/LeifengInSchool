@@ -1,0 +1,123 @@
+<wxs module="filters" src="../../transactionRecord/transactionRecord.wxs"></wxs>
+<view class="container">
+  <view style="background:#9a0000;width:100%;">
+    <button class="userinfo" open-type="getUserInfo" getuserinfo="bindGetUserInfo">
+      <navigator url='/pages/transactionRecord/transactionRecord'>
+        <view style="position:absolute;right:40rpx;color:#000;">交易记录<image src="/static/images/address_right.png" style="width:60rpx;height:30rpx; float:right;margin-top:21rpx;"></image></view>
+      </navigator>
+      <image wx:if="{{userInfo && userInfo.avatarUrl}}" class="userinfo-avatar" src="{{ userInfo.avatarUrl }}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{ userInfo.nickName }}</text>
+    </button>
+  </view>
+
+  <view style="height:84rpx;background: #eee;width:100%;"></view>
+  <view class="my-item" style='background:none;display:flex;flex-direction:column;height:auto;'></view>
+
+  <view class="user-menu">
+    <view class="item"> 
+      <view class="a">
+        <text class="totalsr">{{totalIncome}}</text>
+        <text class="txt">收入(元)</text>
+      </view>
+    </view>
+    <view class="item">
+      <view class="a">
+        <text class="totalsr">{{totalExpenditure}}</text>
+        <text class="txt">支出(元)</text>
+      </view>
+    </view>
+    <view class="item">
+      <view class="a">
+        <!-- <text class="icon address"></text> -->
+        <text class="totalsr">{{totalWithdrawal}}</text>
+        <text class="txt">提现(元)</text>
+      </view>
+    </view>
+
+  </view>
+  <view style="background:#fff;padding:0 40rpx;">
+    <view style="background:#fff;height:80rpx;line-height:80rpx;border-bottom:1px solid #eee;position:relative;">
+      <navigator url="/pages/cash/cash?accountBalance={{accountBalance}}" class="a">余额
+        <text style="margin-left:30rpx;">{{accountBalance}}</text>
+        <image src="/static/images/address_right.png" style="width:60rpx;height:60rpx; float:right;margin-top:10rpx;"></image>
+        <text style="float:right;">提现</text>
+      </navigator>
+    </view>
+    <!-- 微帮助 -->
+    <view style="background:#fff;height:80rpx;line-height:80rpx;border-bottom:1px solid #eee;position:relative;">
+      <navigator url="/pages/OrderIssued/OrderIssued" class="a">
+        我的求助
+        <image src="/static/images/address_right.png" style="width:60rpx;height:60rpx; float:right;margin-top:10rpx;"></image>
+      </navigator>
+    </view>
+    <view style="background:#fff;height:80rpx;line-height:80rpx;border-bottom:1px solid #eee;">
+      <navigator url="/pages/grabbedList/grabbedList" class="a">
+        我的帮助
+        <image src="/static/images/address_right.png" style="width:60rpx;height:60rpx; float:right;margin-top:10rpx;"></image>
+      </navigator>
+    </view>
+    <!-- 二手物品 -->
+    <view style="background:#fff;height:80rpx;line-height:80rpx;border-bottom:1px solid #eee;position:relative;">
+      <navigator url="/pages/OrderIssued/OrderIssued" class="a">
+        我买的闲置
+        <image src="/static/images/address_right.png" style="width:60rpx;height:60rpx; float:right;margin-top:10rpx;"></image>
+      </navigator>
+    </view>
+    <view style="background:#fff;height:80rpx;line-height:80rpx;border-bottom:1px solid #eee;">
+      <navigator url="/pages/grabbedList/grabbedList" class="a">
+        我卖的闲置
+        <image src="/static/images/address_right.png" style="width:60rpx;height:60rpx; float:right;margin-top:10rpx;"></image>
+      </navigator>
+    </view>
+    <!-- 帖子 -->
+    <view style="background:#fff;height:80rpx;line-height:80rpx;border-bottom:1px solid #eee;position:relative;">
+      <navigator url="/pages/OrderIssued/OrderIssued" class="a">
+        我发的帖子
+        <image src="/static/images/address_right.png" style="width:60rpx;height:60rpx; float:right;margin-top:10rpx;"></image>
+      </navigator>
+    </view>
+    <view style="background:#fff;height:80rpx;line-height:80rpx;border-bottom:1px solid #eee;">
+      <navigator url="/pages/grabbedList/grabbedList" class="a">
+        我回复的帖子
+        <image src="/static/images/address_right.png" style="width:60rpx;height:60rpx; float:right;margin-top:10rpx;"></image>
+      </navigator>
+    </view>
+    <view style="background:#fff;height:80rpx;line-height:80rpx;border-bottom:1px solid #eee;">
+      <!-- 未认证 -->
+      <navigator wx:if="{{verifyState==0}}" url="/pages/authentication/attestationPage/attestationPage" class="a">
+        我的认证
+        <image src="/static/images/address_right.png" style="width:60rpx;height:60rpx; float:right;margin-top:10rpx;"></image>
+      </navigator>
+      <!-- 认证中 -->
+      <navigator wx:if="{{verifyState==1}}" url="/pages/authentication/attestationPageing/attestationPageing" class="a">
+        我的认证
+        <image src="/static/images/address_right.png" style="width:60rpx;height:60rpx; float:right;margin-top:10rpx;"></image>
+      </navigator>
+      <!-- 认证成功 -->
+      <navigator wx:if="{{verifyState==2}}" url="/pages/authentication/attestationPageSucc/attestationPageSucc" class="a">
+        我的认证
+        <image src="/static/images/address_right.png" style="width:60rpx;height:60rpx; float:right;margin-top:10rpx;"></image>
+      </navigator>
+      <!-- 认证失败 -->
+      <navigator wx:if="{{verifyState==3}}" url="/pages/authentication/attestationPageFail/attestationPageFail" class="a">
+        我的认证
+        <image src="/static/images/address_right.png" style="width:60rpx;height:60rpx; float:right;margin-top:10rpx;"></image>
+      </navigator>
+    </view>
+    <view style="background:#fff;height:80rpx;line-height:80rpx;border-bottom:1px solid #eee;">
+      <navigator url="/pages/auth/mobile/mobile" class="a">
+        手机号:
+        <text>{{mobile}}</text>
+        <image src="/static/images/address_right.png" style="width:60rpx;height:60rpx; float:right;margin-top:10rpx;"></image>
+        <text style="float:right;" wx:if="{{mobile==''}}">立即绑定</text>
+         <text style="float:right;" wx:else>修改</text>
+      </navigator>
+    </view>
+    <view style="background:#fff;height:80rpx;line-height:80rpx;border-bottom:1px solid #eee;">
+      <navigator url="/pages/ucenter/feedback/feedback" class="a">
+        意见反馈
+        <image src="/static/images/address_right.png" style="width:60rpx;height:60rpx; float:right;margin-top:10rpx;"></image>
+      </navigator>
+    </view>
+  </view>
+</view>

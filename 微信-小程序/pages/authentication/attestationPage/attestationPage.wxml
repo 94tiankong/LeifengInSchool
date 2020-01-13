@@ -1,0 +1,118 @@
+<view style="background:#fbf2c9;position:relative;{{ isRuleTrue ? 'display: block;' : 'display: none;'}}">
+<view style="color:#df9333; padding:10px 50px 0 20px;" >
+为了保证交易的安全，需进行身份认证，该信息仅作学校身份鉴定，仅此一次，请放心填写。通过后，方可进行后续操作。
+</view>
+<image src="/static/images/tipClose.png" bindtap='hideTip' style="width:30rpx;height:30rpx;position:absolute;right:50rpx;top:40rpx;" ></image>
+</view>
+<form bindsubmit='formSubmit'>
+  <view style="padding-left:30rpx;border-bottom:1px solid #ccc;">
+    <view style="float:left;height:80rpx;line-height:80rpx;margin-left:6rpx;">身 份<text style="color:red;">*</text> :</view>
+    <picker bindchange="bindTypeChange" range="{{typeArray}}" range-key="{{'type'}}">
+      <view class="picker">
+        <view class="fb-type">
+          <view class="type-label">{{typeArray[index].type}}</view>
+          <image class="type-icon" src="/static/images/pickerArrow.png"></image>
+        </view>
+      </view> 
+    </picker>
+  </view>
+  <scroll-view scroll-y="true" style="padding-bottom:160rpx;">
+    <!-- 上传工作证 -->
+    <view>
+      <view style="text-align:center;height:auto;border-bottom:1px solid #ccc;padding-top:70rpx;">
+        <button bindtap='chooseImageTap' style="background:#fff;">
+          <image src="{{authenSrc}}" style="{{authenSrcStyle}}"></image>
+          <view wx:if="{{index==0}}">上传校园卡正面照(或者录取通知书内容拍照)<text style="color:red;">*</text></view>
+          <view wx:if="{{index!=0}}">上传教职工卡正面照<text style="color:red;">*</text></view>
+        </button>
+        <!-- <canvas style="width:300px;height:200px;" canvas-id="myCanvas"></canvas> -->
+      </view>
+    </view>
+
+    <view>
+      <view style="border-bottom:1px solid #eee;padding:20rpx 30rpx;">
+        <text style="float:left;margin-top:8rpx;">姓名<text style="color:red;">*</text>：</text>
+        <input type='text' name="realName" value='{{realName}}' bindinput="nameInput" placeholder='请输入您的姓名' />
+      </view>
+      <view style="border-bottom:1px solid #eee;padding:20rpx 30rpx;">
+        <text style="float:left;margin-top:8rpx;">性别<text style="color:red;">*</text>：</text>
+        <radio-group name="rank" bindchange="radioChange">
+          <label class="radio" wx:for="{{items}}">
+            <radio value="{{item.value}}" checked="{{item.checked}}" />{{item.value}}
+          </label>
+        </radio-group>
+      </view>
+      <view style="border-bottom:1px solid #eee;padding:20rpx 30rpx;">
+        <text style="float:left;margin-top:8rpx;">手机号<text style="color:red;">*</text>：</text>
+        <input type='digit' name="mobile" value='{{mobile}}' maxlength="11" bindinput="bindInputMobile" placeholder='请输入11位手机号' />
+      </view>
+      <view style="border-bottom:1px solid #eee;padding:20rpx 30rpx;position:relative;">
+        <text style="float:left;margin-top:8rpx;">验证码<text style="color:red;">*</text>：</text>
+        <input type='number' name="vCode" value='{{vCode}}' maxlength="4" bindinput="vCodeInput" placeholder='请输入验证码' style="width:50%;" />
+        <button bindtap="sendVCode" disabled="{{disableGetMobileCode}}" 
+            style="background:#9a0000;color:#fff;width:32%;position:absolute;right:0;top:0;height:80rpx;line-height:80rpx;font-size:26rpx;margin-right:30rpx;">{{getCodeButtonText}}</button>
+      </view>
+
+      <view style="border-bottom:1px solid #eee;padding:0rpx 30rpx;">
+        <view style="float:left;height:80rpx;line-height:80rpx;">大 学<text style="color:red;">*</text> :</view>
+        <picker mode="multiSelector" bindchange="bindProvinceChange" bindcolumnchange="bindUniversityChange" value="{{multiIndex}}" range="{{multiArray}}">
+          <view class="picker">
+            <view class="fb-type">
+              <view class="type-label">{{university}}</view>
+              <image class="type-icon" src="/static/images/pickerArrow.png"></image>
+            </view>
+          </view> 
+        </picker>
+      </view>
+
+      <view style="border-bottom:1px solid #eee;padding:0rpx 30rpx;">
+        <view style="float:left;height:80rpx;line-height:80rpx;clear:both;">学 院<text style="color:red;">*</text> :</view>
+        <picker mode="selector" bindchange="bindCollegeChange" range="{{collegeArray}}" range-key="{{'regname'}}">
+          <view class="picker">
+            <view class="fb-type">
+              <view class="type-label">{{college}}</view>
+              <image class="type-icon" src="/static/images/pickerArrow.png"></image>
+            </view>
+          </view> 
+        </picker>
+      </view>
+
+      <view wx:if="{{index==1}}">
+        <view style="border-bottom:1px solid #eee;padding:0rpx 30rpx;">
+          <!-- 下拉框 -->
+          <view style="float:left;height:80rpx;line-height:80rpx;margin-left:6rpx;">职称:</view>
+          <picker bindchange="bindTitleChange" range="{{academic}}" range-key="{{'text'}}">
+            <view class="picker">
+              <view class="fb-type">
+                <view class="type-label">{{academic[indexs].text}}</view>
+                <image class="type-icon" src="/static/images/pickerArrow.png"></image>
+              </view>
+            </view>
+          </picker>
+        </view>
+        <view style="border-bottom:1px solid #eee;padding:20rpx 30rpx;">
+          <text style="float:left;margin-top:8rpx;">编号<text style="color:red;">*</text>：</text>
+          <input type='text' name="certificateNo" value='{{certificateNo}}' bindinput="certificateNoInput" placeholder='请输入教职工编号' />
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{index==0}}">
+      <view style="border-bottom:1px solid #eee;padding:20rpx 30rpx;">
+        <text style="float:left;margin-top:8rpx;">专业：</text>
+        <input type='text' name="major" value='{{major}}' bindinput="majorInput" placeholder='请输入专业名' />
+      </view>
+      <view style="border-bottom:1px solid #eee;padding:20rpx 30rpx;">
+        <text style="float:left;margin-top:8rpx;">学号<text style="color:red;">*</text>：</text>
+        <input type='text' name="certificateNo" value='{{certificateNo}}' bindinput="certificateNoInput" placeholder='请输入学号' />
+      </view>
+    </view>
+    <view style="border-bottom:1px solid #eee;padding:20rpx 30rpx;">
+        <text style="float:left;margin-top:8rpx;">职务：</text>
+        <input wx:if="{{index==0}}" type='text' name="jobPost" value='{{jobPost}}' bindinput="jobPostInput" placeholder='请输入职务，例如学生会主席' />
+        <input wx:if="{{index!=0}}" type='text' name="jobPost" value='{{jobPost}}' bindinput="jobPostInput" placeholder='请输入职务，例如系主任' />
+      </view>
+
+  </scroll-view>
+
+  <button bindtap='saveAuthenInfo' style="background:#9a0000;color:#fff;position:fixed;bottom:0rpx;width:100%;z-index:100">提交</button>
+</form>

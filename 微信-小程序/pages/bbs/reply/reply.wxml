@@ -1,0 +1,15 @@
+<view class='textpart'>   
+  <view class='val'>
+    <input name="search" type='text' placeholder-class='holder' value="回复:{{title}}" disabled="true"></input>
+  </view>
+</view>
+<view class='textpart' style='margin-top:10px;padding-bottom:17px;border-bottom:1px solid #ccc;'>
+  <view class='val2'>
+  <textarea bindblur="bindTextAreaBlur" auto-height auto-focus placeholder="回复内容" />
+  </view>
+</view>
+<view>
+<button form-type='submit' >回帖</button>
+<checkbox value="1" checked="checked"/>匿名
+</view>
+  

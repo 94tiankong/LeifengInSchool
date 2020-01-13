@@ -1,0 +1,76 @@
+<view style="background:#fbf2c9;position:relative;">
+<view style="color:black; padding:10px 50px 0 20px;" class="content {{ isRuleTrue ? 'isRuleShow' : 'isRuleHide'}}">
+本平台仅提供校内微帮助，起始地点和目的地只需填校内地址即可，例如：从校南门 到 38号宿舍楼520房间。
+</view>
+<image src="/static/images/tipClose.png" bindtap='hideRule' style="width:30rpx;height:30rpx;position:absolute;right:50rpx;top:40rpx;" ></image>
+</view>
+<form bindsubmit='formSubmit'>
+  <view style="margin-bottom:40rpx;">
+      <view style="background:#fff;height:80rpx;position:relative;">
+    <view style="height:21rpx;line-height:38px;margin-left:19px;font-size:30rpx;">类 型 :</view>
+    <picker bindchange="bindPickerChange" range="{{array}}" range-key="{{'type'}}"  style="position:absolute;top:21rpx;left:60px;"> 
+      <view class="picker">
+        <view class="fb-type">
+          <view class="type-label">{{array[index].type}}</view>
+          <image class="type-icon" src="/static/images/pickerArrow.png"></image>
+        </view>
+      </view>  
+    </picker> 
+  </view>
+    <view style="margin:0 30rpx;">
+      <view style="margin-top:20rpx;border-bottom:1px solid #eee;padding-bottom:20rpx;">
+        <view class="tui-picker-content">
+          <picker mode="multiSelector" value="{{dateTime}}" bindchange="changeDateTime" bindcolumnchange="changeDateTimeColumn" range="{{dateTimeArray}}" style="float:left;">
+            <view class="tui-picker-detail">
+              任务时间: {{dateTimeArray[1][dateTime[1]]}}月{{dateTimeArray[2][dateTime[2]]}}日 {{dateTimeArray[3][dateTime[3]]}}:{{dateTimeArray[4][dateTime[4]]}}分<image class="type-icon" style="width:30rpx;height:30rpx;" src="/static/images/pickerArrow.png"></image><text style='margin:0 10rpx;color:#9a0000;'> 至 </text>
+            </view>
+          </picker>
+          <picker mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1" bindcolumnchange="changeDateTimeColumn1" range="{{dateTimeArray1}}">
+            <view class="tui-picker-detail" style="padding:6rpx 0;">
+             {{dateTimeArray1[1][dateTime1[1]]}}月{{dateTimeArray1[2][dateTime1[2]]}}日 {{dateTimeArray1[3][dateTime1[3]]}}:{{dateTimeArray1[4][dateTime1[4]]}}分<image class="type-icon" style="width:30rpx;height:30rpx;" src="/static/images/pickerArrow.png"></image>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view style="position:relative;height:70rpx;line-height:70rpx;border-bottom:1px solid #eee;" wx:if="{{index==3}}">
+        <input placeholder='辅导地点，比如二教' maxlength="140" value='{{endAdress}}' style=" width:100%;position:absolute;top:3rpx;left:0rpx;" bindinput="endInput" />
+      </view>
+      <view style="position:relative;height:70rpx;line-height:70rpx;border-bottom:1px solid #eee;" wx:else>
+        <input placeholder='从哪里' maxlength="100" value='{{startAdress}}' style="width:30%;position:absolute;top:3rpx;left:79rpx;" bindinput="startInput" />
+        <text style="width:20%;position:absolute;left:138px;color:#9a0000;"> 到 </text>
+        <input placeholder='目的地' maxlength="100" value='{{endAdress}}' style=" width:30%;position:absolute;top:3rpx;right:20rpx;" bindinput="endInput" />
+      </view> 
+      <view style="border-bottom:1px solid #ccc;padding:20rpx 0;">
+        <text style="float:left;margin-top:8rpx;">报酬(元)：</text>
+        <input type='digit' name="money" value='{{moneys}}' bindinput="moneyInput" placeholder="最低1元。报酬越高，效率越高。" />
+      </view>
+      <view class="fb-body" wx:if="{{index==0}}">
+        <textarea class="content" placeholder="任务描述..." bindinput="contentInput" maxlength="140" auto-focus="true" value="{{content}}" />
+      </view>
+      <view class="fb-body" wx:if="{{index==1}}">
+        <textarea class="content" placeholder="请详细描述你的快递信息(比如快递公司、种类、重量、尺寸等)，不要泄露取件信息，取件信息直接发给接单人。" bindinput="contentInput" maxlength="140" auto-focus="true" value="{{content}}" /> 
+      </view> 
+      <view class="fb-body" wx:if="{{index==2}}">
+        <textarea class="content" placeholder="请描述一下你的资料信息(比如书籍、文件、校园卡等)..." bindinput="contentInput" maxlength="140" auto-focus="true" value="{{content}}" />
+      </view>
+      <view class="fb-body" wx:if="{{index==3}}">
+        <textarea class="content" placeholder="辅导科目，比如高数，英语，投资学等..." bindinput="contentInput" maxlength="500" auto-focus="true" value="{{content}}" />
+      </view>
+      <view class="fb-body" wx:if="{{index==4}}">
+        <textarea class="content" placeholder="饭菜是否有其他要求，比如微辣，加点醋之类..." bindinput="contentInput" maxlength="140" auto-focus="true" value="{{content}}" />
+      </view>
+      <view class="fb-body" wx:if="{{index==5}}">
+        <textarea class="content" placeholder="请描述事务类型(比如户口迁移、充水电费、交论文等)..." bindinput="contentInput" maxlength="140" auto-focus="true" value="{{content}}" />
+      </view>
+      <view class="fb-body" wx:if="{{index==6}}">
+        <textarea class="content" placeholder="任务描述..." bindinput="contentInput" maxlength="140" auto-focus="true" value="{{content}}" />
+      </view>
+    </view>
+  </view>
+  <button form-type='submit' style="background:#9a0000;color:#fff;margin:0 30rpx;">发布</button>
+</form>
+<!-- <view style="margin:10rpx 20rpx;padding:20rpx 0;height:45rpx;line-height:45rpx;">
+  <text>
+     注意：本平台提供的是校内微帮助，起始地点和目的地只需填写校内地址即可，例如：从校南门至38号宿舍楼520房间。
+  </text>
+</view> -->

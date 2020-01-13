@@ -1,0 +1,122 @@
+<!--index.wxml-->
+<wxs module="timer" src="./index.wxs"></wxs>
+<view class="container">
+  
+  <!-- banner图 -->
+  <swiper class="banner" indicator-dots="true" autoplay="true" interval="3000" duration="1000">
+  <view style="position:fixed;left:20rpx;top:15rpx;z-index:100;font-weight:bold;">{{university}}</view>
+    <swiper-item>
+      <image src="/static/images/bannar1.png" background-size="cover" style="width: {{imagewidth}}px; height: {{imageheight}}px;" bindload="imageLoad"></image>
+    </swiper-item>
+  </swiper>
+  <!-- 分类 -->
+  <view class="a-section a-topic" style="margin-top:10rpx;margin-bottom:10rpx;">
+    <view class='l-menu'>
+      <view class='l-menu-item'>
+        <view class='l-menu-picture'>
+          <image src='/static/images/hand2goods/图书.png' style='height:90rpx;width:90rpx'></image>
+        </view>
+        <text class='l-menu-text'>图书资料</text>
+      </view>
+      <view class='l-menu-item'>
+        <view class='l-menu-picture'>
+          <image src='/static/images/hand2goods/电子数码.png' style='height:90rpx;width:90rpx'></image>
+        </view>
+        <text class='l-menu-text'>电子数码</text>
+      </view>
+      <view class='l-menu-item'>
+        <view class='l-menu-picture'>
+          <image src='/static/images/hand2goods/美妆个护.png' style='height:90rpx;width:90rpx'></image>
+        </view>
+        <text class='l-menu-text'>美妆个护</text>
+      </view>
+      <view class='l-menu-item'>
+        <view class='l-menu-picture'>
+          <image src='/static/images/hand2goods/票务卡券.png' style='height:90rpx;width:90rpx'></image>
+        </view>
+        <text class='l-menu-text'>票务卡券</text>
+      </view>
+      <view class='l-menu-item'>
+        <view class='l-menu-picture'>
+          <image src='/static/images/hand2goods/运动户外.png' style='height:90rpx;width:90rpx'></image>
+        </view>
+        <text class='l-menu-text'>运动户外</text>
+      </view>
+      <view class='l-menu-item'>
+        <view class='l-menu-picture'>
+          <image src='/static/images/hand2goods/服装鞋帽.png' style='height:90rpx;width:90rpx'></image>
+        </view>
+        <text class='l-menu-text'>服装鞋帽</text>
+      </view>
+      <view class='l-menu-item'>
+        <view class='l-menu-picture'>
+          <image src='/static/images/hand2goods/打包出售.png' style='height:90rpx;width:90rpx'></image>
+        </view>
+        <text class='l-menu-text'>打包出售</text>
+      </view>
+      <view class='l-menu-item'>
+        <view class='l-menu-picture'>
+        <navigator url="/pages/hand2goods/list/list">
+          <image src='/static/images/hand2goods/全部闲置.png' style='height:90rpx;width:90rpx'></image>
+          </navigator>
+        </view>
+        <navigator url="/pages/hand2goods/list/list">
+        <text class='l-menu-text'>全部闲置</text>
+        </navigator>
+      </view>
+   
+    
+    </view>
+    <view class="m-menu">
+      <view class="item" style="border-right:1px solid #ccc;">
+        <image data-num="1" src="/static/images/girl-2.png"></image>
+        <text style="font-size:26rpx;">帮女神</text>
+      </view>
+      <view class="item" style="border-right:1px solid #ccc;">
+        <image data-num="2" src="/static/images/boy-2.png" ></image>
+        <text style="font-size:26rpx;" data-index='2'>帮男神</text>
+      </view>
+      <view class="item">
+        <image data-num="3" src="/static/images/teacher-2.png"></image>
+        <text style="font-size:26rpx;" data-index='3'>帮老师</text>
+      </view>
+      <view class='item'>
+      <navigator url="/pages/microHelp/list/list">
+        <image src='/static/images/qbwbz.png' style='margin-top:20rpx;width:100rpx;height:100rpx;'></image>
+      </navigator>
+      </view>
+    </view>
+  </view>
+ 
+ <view class='posttitle'>
+    <text class='hotposttext'>热门帖子</text>
+    <navigator url="/pages/bbs/list/list">
+    <text class='allposttext'>全部帖子></text>
+    </navigator>
+ </view>
+ <view class='list'>
+  <view class='list-item' wx:for="{{bbsHotList}}" wx:key="item">
+    <view class='desc'>
+      <view class='baseinfo'>
+        <view class='avatar'>
+          <image src='{{item.avatar}}'style='width:30px;height:30px'></image>
+        </view>
+      <view class='userinfo'>
+        <view class='username'>{{item.nickname}}</view>
+        <view class='usercollege'>{{item.college}}</view>
+      </view>
+    </view>
+      <view class='content'><navigator url="/pages/bbs/detail/detail?bbsNo={{item.bbsNo}}">
+      {{item.title}}
+      </navigator></view>
+      <view class='lastline'>
+        <text class="responsetime">最新回复：{{item.lastReplyTimeStr}}</text>
+        <image src='/static/images/reply.png'class='commentpicture'></image>
+        <text class='commentnumber'>{{item.replyNum}}</text>
+      </view>
+    </view>
+
+
+  </view>
+</view>
+</view>

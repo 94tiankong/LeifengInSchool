@@ -1,0 +1,29 @@
+<view class='textpart'>   
+  <view class='val'>
+    <input name="search" type='text' placeholder-class='holder' placeholder='标题:'></input>
+  </view>
+</view>
+<view class='textpart' style='margin-top:10px;padding-bottom: 17px;border-bottom: 1px solid #ccc;'>
+  <view class='val2'>
+   <input name="search" type='text' placeholder-class='holder' placeholder='请输入内容：'></input>
+  </view>
+</view>
+
+<view class="section;">
+  
+  <view wx:if="picture===''" class='addpicturepart' >
+    <image src='../static/images/camera.png' style='width:70px;height:70px;'bindtap='addpicture' ></image>
+    <text class='bigsize'>添加图片/视频</text>
+  </view> 
+  
+  <view  class="addedpicturepart" wx:else><!-- 这里的if有点问题,在photo里面添加信息后，仍然无法显示-->
+    <view class='addedpicturelittlepart'>
+      <view class="addedpicture" bindtap='addpicture'>1</view><!-- 这里的点击事件设置为添加应该是放大图片-->
+      <view class='bigsize'>删除</view>
+    </view>
+    <view class="addedpicture" bindtap='addpicture'>2</view>
+    <view class="addedpicture" bindtap='addpicture'>3</view>
+  </view>
+</view>
+  <button form-type='submit' class='button'>发布</button>
+  

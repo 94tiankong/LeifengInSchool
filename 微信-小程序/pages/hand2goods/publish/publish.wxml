@@ -1,0 +1,61 @@
+<view class="section;">
+  
+  <view wx:if="{{mediaArr.length==0}}" class='addpicturepart' >
+    <image src='/static/images/camera.png' style='width:100%;height:80px;'bindtap='addMedia'></image>
+    <text class='bigsize'>添加图片/视频</text>
+  </view> 
+  <view  class="addedpicturepart" wx:if="{{mediaArr.length!=0}}">
+    <view class="addedpicture" wx:for="{{mediaArr}}">
+    <image src='{{item.mediaUrl}}' data-imgsrc="{{item.mediaUrl}}" wx:if="{{item.mediaType == 1}}" style='width:100%;height:80px;' bindtap='previewImg'></image>
+    <video wx:if="{{item.mediaType == 2}}" src="{{item.mediaUrl}}" binderror="videoErrorCallback" style='width:100%;height:80px;'></video>
+    <text data-imgsrc="{{item.mediaUrl}}" bindtap='delImg' class="delImg">删除 </text>
+    </view>
+
+    <view class="addedpicture td" wx:for="{{3 - mediaArr.length}}">
+    <image src='/static/images/camera.png' style='width:80rpx;height:40px;'bindtap='addMedia'></image>
+    </view>
+
+  </view>
+</view>
+ <view class='content' style="border-bottom:1px solid #ccc;padding:10rpx 0;">
+      <text class='title bigsize'>物品标题：</text><text class="littlesize" style="float:right;">{{titleLength}}/100</text>
+      <input  class='littlesize' maxlength="100" bindinput="bindInputTitle" value="{{title}}" placeholder="输入名称/品牌/型号方便同学搜索" />
+    </view>
+    <view class="fb-body">
+        <text style="float:right;padding-top:250rpx;margin-right:20rpx;color:#333;line-height:40rpx;font-size:28rpx;">{{goodsDescLength}}/500</text>
+        <textarea class="content littlesize" placeholder="描述一下你的物品：入手渠道、转手原因、新旧程度、使用体验等信息，同校交易，向同学们描述宝贝真实信息哦！" bindinput="bindInputGoodsDesc" maxlength="500" auto-focus="true" value="{{goodsDesc}}" />
+      </view>
+<view style="background:#fff;padding:0rpx 0rpx 0rpx 20rpx;">
+  <view class='blocks'>
+  <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+    <view class='Classificationsection'>
+      <text style="float:left;margin-top:3rpx;"class='bigsize'>物品分类：{{multiArray[0][multiIndex[0]]}}，{{multiArray[1][multiIndex[1]]}}</text><image class="type-icon" wx:if="{{multiArray[0][multiIndex[0]]}}" src="/static/images/pickerArrow.png" style="margin-top:20rpx;height:36rpx;width:36rpx;margin-left:20rpx;"></image>
+   </view>
+   </picker>
+  </view>
+  <view class='blocks'>
+    <view style="width:150rpx;">
+     <text style="margin-top:8rpx"class='bigsize'>转让价:</text>
+    </view>
+    <view>
+      <input class='littlesize' bindinput="bindInputCurrentPrice"  type='digit' value="{{currentPrice}}" style='margin-top:20rpx;' placeholder='￥'></input>
+    </view>
+    <view style="width:150rpx;">
+     <text style="margin-top:8rpx;margin-left:18rpx"class='bigsize'>原价:</text>
+    </view>
+    <view>
+      <input class='littlesize' bindinput="bindInputOriginalPrice"  type='digit' value="{{originalPrice}}" style='margin-top:20rpx;' placeholder='￥'></input>
+    </view>
+  </view>
+  <view class='blocks'>
+   <text style="margin-top:8rpx;"class='bigsize'>交易方式：</text>
+    <radio-group class="radio-group" bindchange="radioChange" style="margin-left:10rpx">
+      <label class="radio" class='bigsize' wx:for="{{deliverWays}}">
+       <radio value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
+      </label>
+    </radio-group>
+    <input class='littlesize' maxlength="100" bindinput="bindInputShippingAddr" wx:if="{{deliverWay == 1}}" value="{{shippingAddr}}" style='margin:20rpx 0 0 10rpx;' placeholder='校内地址,例：5号楼520'></input>
+  </view>
+</view>
+  <button form-type='submit' bindtap="saveHand2Goods" class='button'>发布</button>
+

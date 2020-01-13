@@ -1,0 +1,23 @@
+<view class="modals">
+    <view class="mask" bindtap="hideModal" animation="{{animationMask}}"></view>
+    <view class="content bottom-pos" animation="{{animationData}}">
+    <view style="width:33%;float:left;">
+    <navigator url="/pages/microHelp/publish/publish">
+    <image src="/static/images/help.png" style="width:60rpx;height:60rpx;"></image><text>求帮助</text>
+    </navigator>
+    </view>
+    <view style="width:33%;float:left;">
+    <navigator url="/pages/hand2goods/publish/publish">
+    <image src="/static/images/hand2goods.png"  style="width:60rpx;height:60rpx;"></image><text>卖闲置</text>
+    </navigator>
+    </view>
+    <view style="width:33%;float:left;">
+    <navigator url="/pages/bbs/publish/publish">
+    <image src="/static/images/bbs.png"  style="width:60rpx;height:60rpx;"></image><text>发帖子</text>
+    </navigator>
+    </view>
+      <view class="closeChoose"><image src="/static/images/close.png" bindtap="hideModal" style="width:60rpx;height:60rpx;"></image><text>关闭</text>
+    </view>
+    </view>
+</view>
+<!-- <button class='btn' bindtap="showModal">点我</button> -->

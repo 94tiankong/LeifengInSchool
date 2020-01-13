@@ -1,0 +1,152 @@
+<view>
+  <view style="border-bottom:15rpx solid #eee;height:100rpx;padding-top:8rpx;">
+    <view style="float:left;height:80rpx;line-height:80rpx;margin-left:40rpx;">总计（{{totalNum}}）</view>
+    <view style="float:left;height:80rpx;line-height:80rpx;margin-left:6rpx;">类 型 :</view>
+    <picker bindchange="bindPickerChange" range="{{array}}" range-key="{{'type'}}">
+      <view class="picker">
+        <view class="fb-type">
+          <view class="type-label">{{array[index].type}}</view>
+          <image class="type-icon" src="/static/images/pickerArrow.png"></image>
+        </view>
+      </view>
+    </picker>
+  </view>
+  <view class="TypeInvoice">
+
+    <!-- 抢单列表 -->
+    <view class="grabSheet" wx:if="{{grabSheet.length > 0}}">
+      <view style="position: relative;background:#fff;padding:0 30rpx;border-bottom:10rpx solid #eee;" wx:for="{{grabSheet}}" wx:key="{{item.helpId}}">
+        <view style="margin-top:10rpx;padding-top:30rpx;" class="clearfix;">
+          <!-- <text>类型：</text> -->
+          <text>
+           <text style="margin-left:20rpx;position:absolute;top:40rpx;left:8rpx;" wx:if="{{item.helpType==1}}">取快递</text>
+          <text style=" margin-left:20rpx;position:absolute;top:40rpx;left:8rpx;" wx:if="{{item.helpType==2}}">送资料</text>
+          <text style="margin-left:20rpx;position:absolute;top:40rpx;left:8rpx;" wx:if="{{item.helpType==3}}">求辅导</text>
+          <text style="margin-left:20rpx;position:absolute;top:40rpx;left:8rpx;" wx:if="{{item.helpType==4}}">代打饭</text>
+          <text style="margin-left:20rpx;position:absolute;top:40rpx;left:8rpx;" wx:if="{{item.helpType==5}}">办事务</text>
+          <text style="margin-left:20rpx;position:absolute;top:40rpx;left:8rpx;" wx:if="{{item.helpType==90}}">其它</text>
+          </text>
+          <text style="margin-left:20rpx;position:absolute;top:40rpx;left:258rpx; ">报酬：￥{{item.helpReward}}</text>
+          <text>
+          <text style="float:right;;font-size:12px;color:#9a0000;margin-top:20rpx; " wx:if="{{item.helpStateStr=='待支付'}}">待支付</text>
+          <text style="float:right;;font-size:12px;color:#9a0000;margin-top:20rpx; " wx:if="{{item.helpStateStr=='支付中'}}">支付中</text>
+          <text style="float:right;;font-size:12px;color:#9a0000;margin-top:20rpx; " wx:if="{{item.helpStateStr=='已支付'}}">已支付</text>
+          <text style="float:right;;font-size:12px;color:#9a0000;margin-top:20rpx; " wx:if="{{item.helpStateStr=='未认证'}}">待发布</text>
+          <text style="float:right;;font-size:12px;color:#9a0000;margin-top:20rpx; " wx:if="{{item.helpStateStr=='认证中'}}">待发布</text>
+          <text style="float:right;;font-size:12px;color:#9a0000;margin-top:20rpx; " wx:if="{{item.helpStateStr=='认证失败'}}">待发布</text>
+          <text style="float:right;;font-size:12px;color:#9a0000;margin-top:20rpx; " wx:if="{{item.helpStateStr=='已支付已过期'}}">已支付已过期</text>
+          <text style="float:right;;font-size:12px;color:#9a0000;margin-top:20rpx; " wx:if="{{item.helpStateStr=='未支付已过期'}}">未支付已过期</text>
+          <text style="float:right;;font-size:12px;color:#9a0000;margin-top:20rpx; " wx:if="{{item.helpStateStr=='待评价'}}">待评价</text>
+          <text style="float:right;;font-size:12px;color:#9a0000;margin-top:20rpx; " wx:if="{{item.helpStateStr=='已完成'}}">已完成</text>
+          <text style="float:right;;font-size:12px;color:#9a0000;margin-top:20rpx; " wx:if="{{item.helpStateStr=='抢单中'}}">抢单中</text>
+          <text style="float:right;;font-size:12px;color:#9a0000;margin-top:20rpx; " wx:if="{{item.helpStateStr=='帮助中待确认'}}">帮助中待确认</text>
+         <text style="float:right;;font-size:12px;color:#9a0000;margin-top:20rpx; " wx:if="{{item.helpStateStr=='已退款'}}">已退款</text>
+
+          </text>
+        </view>
+        <!-- <navigator url="/pages/OrderDetailsPage/OrderDetailsPage?helpId={{item.helpId}} " style="margin-top:76rpx; "> -->
+        <view style="margin-top:76rpx; ">
+          <view style="margin-top:20rpx; ">送达时间：{{item.startTimeStr}}<text style="color:#9a0000;"> - </text>{{item.endTimeStr}}
+          </view>
+          <view style="margin-top:20rpx;font-size：26rpx; ">地址：{{item.startAddr}}<text style="color:#9a0000;"> 到 </text>{{item.endAddr}}</view>
+          <view>
+            <view style="margin-top:20rpx;font-size：26rpx; ">
+              <text>任务描述：{{item.helpDesc}}</text>
+            </view>
+          </view>
+        </view>
+        <!-- </navigator> -->
+        <view style="position:relative;margin-top:30rpx;height:100rpx; ">
+
+           <view wx:if="{{item.helpStateStr=='支付中' || item.helpStateStr=='待支付'}}">
+            <button style="background:#9a0000;color:#fff;margin-top:10rpx;width:252rpx;position:absolute;bottom:30rpx;right:330rpx;line-height:40px;font-size:14px; " data-helpreward='{{item.helpReward}}' data-id='{{item.helpId}}' bindtap="repay">继续支付
+            </button>
+            <button style="background:#fff;color:#9e0000;border:1px solid #9e0000;margin-top:10rpx;width:252rpx;position:absolute;bottom:30rpx;right:30rpx;line-height:38px;font-size:14px; " data-id='{{item.helpId}}' bindtap="cancelHelp">取消该单
+            </button>
+          </view>
+          <view wx:if="{{item.helpStateStr=='未认证'}}">
+            <view>
+              还未身份认证，快来进行身份认证。
+            </view>
+            <button style="background:#9a0000;color:#fff;margin-top:10rpx;width:252rpxposition:absolute;top:0rpx;right:30rpx;line-height:40px;font-size:14px; " data-id='{{item.helpId}}' bindtap="certification">去认证
+            </button>
+          </view>
+          <view wx:if="{{item.helpStateStr=='认证中'}}">
+            <view>
+              身份认证中，认证成功后即可发单成功
+            </view>
+          </view>
+          <view wx:if="{{item.helpStateStr=='认证失败'}}">
+            <view style="position:absolute;top:36rpx;left:68rpx;">
+              身份认证失败，请重新认证。
+            </view>
+            <button style="background:#9a0000;color:#fff;margin-top:10rpx;width:252rpx;position:absolute;top:0rpx;right:0rpx;line-height:40px;font-size:14px; " data-id='{{item.helpId}}' bindtap="recertification">重新认证
+            </button>
+          </view>
+          <view wx:if="{{item.helpStateStr=='抢单中'}}">
+            <view style="position:absolute;right:150rpx;top:45rpx;color:#999;">
+              分享给校友，让更多的校友来抢单
+            </view>
+            <button type="primary" open-type="share" data-name="pageShare" data-usergroup="{{item.userGroup}}" data-helpid="{{item.helpId}}" id="share" style="height:78rpx;width:88rpx;background:#fff;position:absolute;top:32rpx;right:0rpx;">
+              <image src="/static/images/pyq.png" style="width:80rpx;height:66rpx;"></image>
+            </button>
+            <button type="primary" open-type="share" data-helpid="{{item.helpId}}" data-usergroup="{{item.userGroup}}" data-name="pageShare" id="share" style="height:78rpx;width:80rpx;background:#fff;position:absolute;right:74rpx;top:34rpx;">
+              <image src="/static/images/wx.png" style="width:50rpx;height:50rpx;"></image>
+            </button>
+          </view>
+          <view wx:if="{{item.helpStateStr=='未支付已过期'}}">
+            <button style="background:#9a0000;color:#fff;margin-top:10rpx;width:252rpx;position:absolute;bottom:30rpx;right:0rpx;line-height:40px;font-size:14px; " data-id='{{item.helpId}}' bindtap="deleteHelp">删除
+            </button>
+          </view>
+          <view wx:if="{{item.helpStateStr=='已支付已过期'}}">
+           <!-- <button style="background:#fff;color:#9e0000;border:1px solid #9e0000;margin-top:10rpx;width:250rpx;position:absolute;bottom:30rpx;right:330rpx;line-height:38px;font-size:14px; " data-id='{{item.helpId}}' bindtap="repeatBtn">重发
+            </button>-->
+            <button style="background:#9a0000;color:#fff;margin-top:10rpx;width:252rpx;position:absolute;bottom:30rpx;right:30rpx;line-height:40px;font-size:14px; " data-helpno='{{item.helpNo}}' data-payway='{{item.payWay}}' bindtap="refund">退款
+            </button>
+          </view>
+          <view wx:if="{{item.helpStateStr=='帮助中待确认'}}">
+            <button style="background:#fff;color:#9e0000;border:1px solid #9e0000;margin-top:10rpx;width:250rpx;position:absolute;bottom:30rpx;right:330rpx;line-height:38px;font-size:14px; " data-id='{{item.helpId}}' bindtap="helpInformation">雷锋信息
+            </button>
+            <button style="background:#9a0000;color:#fff;margin-top:10rpx;width:252rpx;position:absolute;bottom:30rpx;right:30rpx;line-height:40px;font-size:14px; " data-helpno='{{item.helpNo}}' bindtap="confirmationService">确认
+            </button>
+          </view>
+          <view wx:if="{{item.helpStateStr=='待评价'}}">
+            <button style="background:#fff;color:#9e0000;border:1px solid #9e0000;margin-top:10rpx;width:250rpx;position:absolute;bottom:30rpx;right:330rpx;line-height:38px;font-size:14px; " data-id='{{item.helpId}}' bindtap="helpInformation">雷锋信息
+            </button>
+            <button style="background:#9a0000;color:#fff;margin-top:10rpx;width:252rpx;position:absolute;bottom:30rpx;right:30rpx;line-height:40px;font-size:14px; " data-id='{{item.helpId}}' data-helper="{{item.helperRealName}}" data-helperavatar="{{item.helperAvatar}}"
+              bindtap="evaluateHelper">评价
+            </button>
+          </view>
+          <view wx:if="{{item.helpStateStr=='已完成'}}" >
+            <view style="margin-top:10rpx;width:100%;position:absolute;top:-15rpx;font-size:14px;" data-id='{{item.helpId}}'>我的评价:
+              <text>{{item.satisfactToHelper}}(分)</text>
+              <view style="margin-top:20rpx;">评价内容：{{item.commentToHelper}}</view>
+            </view>
+            <button style="background:#fff;color:#9e0000;border:1px solid #9e0000;margin-top:10rpx;width:250rpx;position:absolute;bottom:43rpx;;right:30rpx;line-height:38px;font-size:14px; " data-id='{{item.helpId}}' bindtap="helpInformation">雷锋信息
+            </button>
+          </view>
+          <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal==item.helpId}}"></view>
+          <view class="dialog-box" wx:if="{{showModal==item.helpId}}">
+            <image src="/static/images/clear_input.png" bindtap='closeInfo'/>
+            <text style="margin-left:40rpx;margin-top:40rpx;color:#000;font-size:32rpx;">雷锋信息</text>
+            <view style="margin:0 40rpx;">
+             <image src="{{item.helperAvatar}}"  style="position:absolute;left:40rpx;top:93rpx;"></image>
+              <view style="position:relative;margin-top:30rpx;margin-left:100rpx;">
+                <text>{{item.helperRealName}}</text>
+                <image src="/static/images/xing.png" style="width:40rpx;height:40rpx;position:absolute;top:0rpx;left:120px;"></image>
+                <text style="position:absolute;top:0rpx;left:300rpx;" wx:if="{{item.satisfactToHelper==null}}">待评价</text>
+                <text style="position:absolute;top:0rpx;left:300rpx;" wx:if="{{item.satisfactToHelper!=null}}">{{item.satisfactToHelper}}(分)</text>
+              </view>
+              <view style="margin-top:60rpx;">学院：{{item.helperCollege}}</view>
+              <view style="margin-top:30rpx;">专业：{{item.helperMajor}}</view>
+              <view style="margin-top:30rpx;">学号：{{item.helperCertificateNo}}</view>
+              <view style="margin-top:30rpx;">手机号：{{item.helperMobile}}</view>
+            </view>
+            <!-- <button bindtap="confirm">确定</button> -->
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{grabSheet.length <= 0}}" style="margin-top:200rpx;text-align:center;"> 您还没有发单</view>
+</view>
